@@ -17,7 +17,7 @@ Guests tap to open, a short film walks them through a floral hallway onto a moon
 - **Evening schedule** with a gold timeline
 - **Venue** card with the venue logo and an *Open in Maps* button
 - **Dress code** with color swatches
-- **RSVP / guest book** sent straight to the couple on WhatsApp (free, no backend)
+- **RSVP / guest book** saved to a private Google Sheet (free), with a beautiful **wishes page** for the couple
 - **FAQ** and a closing Polaroid photo
 - **Background music** with a play / pause button
 - Mobile-first, dark-mode aware, and respects *Reduce Motion*
@@ -27,17 +27,22 @@ Guests tap to open, a short film walks them through a floral hallway onto a moon
 ```
 MnM26/
 ├── index.html          # the whole invitation (HTML, CSS, JS, embedded images)
+├── wishes.html         # private wishes & guest list for the couple (passcode protected)
 ├── assets/
+│   ├── config.js       # one setting: your Apps Script URL
 │   ├── intro.mp4       # opening film (muted; music plays separately)
 │   └── poster.jpg      # first frame of the film, shown before tapping and used as the link preview
 ├── docs/
-│   ├── CUSTOMIZE.md    # how to change names, dates, text, RSVP number, music, photos
+│   ├── BACKEND.md      # saving RSVPs & wishes (Google Sheet + Apps Script)
+│   ├── CUSTOMIZE.md    # how to change names, dates, text, music, photos
 │   └── DEPLOY.md       # how to publish on GitHub Pages
+├── backend/
+│   └── Code.gs         # Google Apps Script that saves and reads replies
 ├── .nojekyll           # tells GitHub Pages to serve files as-is
 └── README.md
 ```
 
-No build step, no dependencies. It's a static site you can open directly in a browser.
+No build step, no dependencies. It's a static site you can open directly in a browser. Replies are stored by a free Google Apps Script, so no server is needed.
 
 ## 🚀 Quick start
 
@@ -48,14 +53,19 @@ No build step, no dependencies. It's a static site you can open directly in a br
    # then open http://localhost:8000
    ```
 3. Publish with GitHub Pages: see **[docs/DEPLOY.md](docs/DEPLOY.md)**.
+4. Connect RSVP saving: see **[docs/BACKEND.md](docs/BACKEND.md)**.
+
+## 💌 Reading the wishes
+
+Open **`/wishes.html`** on your site and enter your passcode to see every wish as a keepsake card, the full guest list with headcount, filters, search, a full-screen book view, CSV download, and print.
 
 ## ✏️ Customizing
 
-Names, date, schedule, FAQ, Arabic text, the WhatsApp RSVP number, and the music are all covered in **[docs/CUSTOMIZE.md](docs/CUSTOMIZE.md)**.
+Names, date, schedule, FAQ, Arabic text, and the music are all covered in **[docs/CUSTOMIZE.md](docs/CUSTOMIZE.md)**.
 
 ## 🔒 Privacy note
 
-On the free GitHub plan, a repo must be **public** to use GitHub Pages, so anyone could see the files, including the photos and (once added) the WhatsApp number. Share the link only with your guests, and keep that in mind before adding anything private.
+On the free GitHub plan, a repo must be **public** to use GitHub Pages, so anyone could see the files, including the photos. Guest replies are **not** stored in the repo: they live in your private Google Sheet, and the wishes page needs your passcode.
 
 ## 💌 Credits
 

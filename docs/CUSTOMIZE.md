@@ -14,15 +14,9 @@ Everything lives in **`index.html`**. Open it in any text editor (VS Code, or Gi
 - **Visible date text:** the hero `<p class="date">` line, and the `when:` key in both language blocks.
 - **RSVP deadline:** the `gT:` key in both language blocks.
 
-## WhatsApp RSVP number
+## RSVP saving
 
-Search for `const WHATSAPP = ""` and enter the number with the country code, digits only:
-
-```js
-const WHATSAPP = "201001234567";
-```
-
-Guests' replies open in their own WhatsApp, pre-written and addressed to this number. It's free and there's no limit.
+Replies are saved to your Google Sheet. The only setting is the Apps Script URL in `assets/config.js`. See [BACKEND.md](BACKEND.md). The thank-you and error messages are the `thanks`, `thanksNo`, `failed`, and `closed` keys in both language blocks.
 
 ## Schedule, dress code, FAQ
 

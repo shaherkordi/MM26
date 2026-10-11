@@ -6,8 +6,10 @@
  <meta name="description" content="Mohamed &amp; Maryam — Thursday, 29 October 2026 · Tia Vie, Sheikh Zayed">
   <meta property="og:title" content="Mohamed &amp; Maryam — You're invited">
   <meta property="og:description" content="Thursday, 29 October 2026 · 7:00 PM · Tia Vie, Grand Plaza Hotel, Sheikh Zayed">
-  <meta property="og:image" content="assets/poster.jpg">
+  <meta property="og:image" content="https://shaherkordi.github.io/MM26/assets/poster.jpg">
+  <meta property="og:url" content="https://shaherkordi.github.io/MM26/">
   <meta name="theme-color" content="#0d1426">
+  <script src="assets/config.js"></script>
   <title>Mohamed &amp; Maryam — You're invited</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Jost:wght@300;400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
@@ -341,6 +343,7 @@
             <button type="button" aria-pressed="false" data-v="no" data-i18n="no">Sadly no</button>
           </div></div>
         <div class="field"><label for="g-count" data-i18n="fCount">Number of guests</label><select id="g-count"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+        <input id="g-web" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <div class="field"><label for="g-msg" data-i18n="fMsg">A message for the couple</label><textarea id="g-msg"></textarea></div>
         <button class="btn solid" id="send" type="button" data-i18n="send">Send with love</button>
         <div class="note" id="note" role="status"></div>
@@ -401,7 +404,7 @@
 
 <script>
 (function(){
-  const WHATSAPP = "";   // couple's WhatsApp number for RSVPs, e.g. "201001234567"
+  const API_URL = (window.MNM_CONFIG && window.MNM_CONFIG.API_URL) || "";
   const I18N = {
     en: {
       hint:"Tap to open", families:"Together with their families", n1:"Mohamed", amp:"&amp;", n2:"Maryam",
@@ -415,8 +418,7 @@
       fName:"Your name", fAtt:"Attending", yes:"Joyfully yes", no:"Sadly no", fCount:"Number of guests", fMsg:"A message for the couple", send:"Send with love",
       fH:"Good to know", love:"With love and gratitude",
       errName:"Add your name so we know who it’s from.", errAtt:"Choose whether you can attend.",
-      sent:"Opening WhatsApp so you can send it to us.", noNum:"Thank you! (RSVP sending will be connected once the couple’s number is added.)",
-      msgHead:"RSVP for Mohamed & Maryam", msgName:"Name", msgYes:"Joyfully attending", msgNo:"Regretfully can't attend", msgGuests:"Guests",
+      sending:"Sending…", thanks:"Thank you! Your reply and wishes have reached us 🤍", thanksNo:"Thank you for your kind words. You will be missed 🤍", failed:"Something went wrong. Please check your connection and try again.", closed:"Replies aren’t open yet. Please check back soon.", again:"Send another reply",
       title:"Mohamed & Maryam — You're invited", toggle:"عربي",
       sched:[["7:00 pm","Welcome","Guests arrive and are welcomed at Tia Vie."],["8:00 pm","The Zaffa","The bride and groom make their grand entrance."],["10:00 pm","Dinner & Celebration","Dinner, cake, and dancing into the night."]],
       colors:["Cream","Blush","Sand","Gold","Black"],
@@ -433,8 +435,7 @@
       fName:"الاسم", fAtt:"هل ستحضر؟", yes:"بكل سرور", no:"أعتذر عن الحضور", fCount:"عدد الأفراد", fMsg:"كلمة للعروسين", send:"أرسل تهنئتك",
       fH:"أسئلة تهمّك", love:"بكل الحب والامتنان",
       errName:"من فضلك اكتب اسمك.", errAtt:"من فضلك أخبرنا إن كنت ستحضر.",
-      sent:"جارٍ فتح واتساب لإرسال ردّك.", noNum:"شكرًا لك! سيتم تفعيل الإرسال قريبًا.",
-      msgHead:"تأكيد حضور زفاف محمد ومريم", msgName:"الاسم", msgYes:"سأحضر بإذن الله", msgNo:"أعتذر عن الحضور، مع خالص التهاني", msgGuests:"عدد الأفراد",
+      sending:"جارٍ الإرسال…", thanks:"شكرًا لك! وصلنا ردّك وتهنئتك 🤍", thanksNo:"شكرًا على كلماتك الجميلة، سنفتقدك 🤍", failed:"حدث خطأ، تأكّد من اتصالك بالإنترنت وحاول مرة أخرى.", closed:"تأكيد الحضور غير متاح بعد، حاول لاحقًا.", again:"إرسال ردّ آخر",
       title:"دعوة زفاف محمد ومريم", toggle:"EN",
       sched:[["السابعة مساءً","استقبال الضيوف","في انتظاركم بكل حب في تيا ڤي."],["الثامنة مساءً","الزفّة","لحظة دخول العروسين."],["العاشرة مساءً","العشاء والسهرة","عشاء وتورتة، وسهرة حتى آخر الليل."]],
       colors:["أوف وايت","روز","بيج","ذهبي","أسود"],
@@ -463,14 +464,27 @@
   document.querySelectorAll('#attend button').forEach(b=>b.onclick=()=>{
     document.querySelectorAll('#attend button').forEach(x=>x.setAttribute('aria-pressed','false'));
     b.setAttribute('aria-pressed','true'); attending=b.dataset.v; });
-  document.getElementById('send').onclick=()=>{
+  const sendBtn=document.getElementById('send');
+  sendBtn.onclick=async()=>{
     const name=document.getElementById('g-name').value.trim(), note=document.getElementById('note');
     const t=I18N[LANG];
     if(!name){ note.textContent=t.errName; return; }
     if(!attending){ note.textContent=t.errAtt; return; }
-    const msg=`${t.msgHead}\n${t.msgName}: ${name}\n${attending==='yes'?t.msgYes:t.msgNo}\n${t.msgGuests}: ${document.getElementById('g-count').value}\n\n${document.getElementById('g-msg').value.trim()}`;
-    if(WHATSAPP){ window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,'_blank'); note.textContent=t.sent; }
-    else note.textContent=t.noNum;
+    if(!API_URL || API_URL.indexOf('PASTE_')===0){ note.textContent=t.closed; return; }
+    const entry={ name, attending, party: attending==='yes' ? Number(document.getElementById('g-count').value) : 0,
+                  message: document.getElementById('g-msg').value.trim(), lang: LANG,
+                  website: (document.getElementById('g-web')||{}).value||'' };
+    sendBtn.disabled=true; note.textContent=t.sending;
+    try{
+      const r=await fetch(API_URL,{ method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(entry) });
+      let ok=r.ok; try{ const j=await r.json(); ok = ok && j.ok!==false; }catch(e){}
+      if(!ok) throw new Error('save failed');
+      note.textContent = attending==='yes' ? t.thanks : t.thanksNo;
+      ['g-name','g-msg'].forEach(id=>document.getElementById(id).value='');
+      document.querySelectorAll('#attend button').forEach(x=>x.setAttribute('aria-pressed','false')); attending='';
+      sendBtn.textContent=t.again;
+    }catch(e){ note.textContent=t.failed; }
+    finally{ sendBtn.disabled=false; }
   };
 
   /* ---------- music: soft original music-box loop (replace with your song later) ---------- */

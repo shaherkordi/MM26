@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Wishes for Mohamed &amp; Maryam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&family=Aref+Ruqaa&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="assets/config.js"></script>
+<style>
+  :root {
+    --paper:#F6F1EA; --card:#FFFDF8; --blush:#F4E2DB; --ink:#2B2824; --muted:#7C746A; --gold:#B08A4E; --gold-soft:#E2D2B2;
+    --sage:#56634A; --line:rgba(43,40,36,.13);
+    --script:"Pinyon Script","Aref Ruqaa","Snell Roundhand",cursive;
+    --serif:"Cormorant Garamond","Amiri",Georgia,serif;
+    --sans:"Jost","Helvetica Neue",Arial,sans-serif;
+    box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --paper:#1E1C19; --card:#26231F; --blush:#33292A; --ink:#EDE6D8; --muted:#B3AA98; --gold:#D4B47A; --gold-soft:#5A4B30; --sage:#8FA07C; --line:rgba(237,230,216,.14); }
+  }
+  :root[data-theme="dark"] { --paper:#1E1C19; --card:#26231F; --blush:#33292A; --ink:#EDE6D8; --muted:#B3AA98; --gold:#D4B47A; --gold-soft:#5A4B30; --sage:#8FA07C; --line:rgba(237,230,216,.14); }
+  *, *::before, *::after { box-sizing:inherit; }
+  [hidden] { display:none !important; }
+  html { scroll-padding-top:env(safe-area-inset-top,0px); }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:var(--serif); font-size:18px; line-height:1.55; -webkit-font-smoothing:antialiased; }
+  button, input { font:inherit; color:inherit; }
+  :focus-visible { outline:2px solid var(--gold); outline-offset:2px; }
+  .wrap { max-width:1060px; margin:0 auto; padding:56px 22px 60px; }
+
+  /* header */
+  header { text-align:center; }
+  .names { font-family:var(--script); font-weight:400; font-size:clamp(2.6rem, 11vw, 5.2rem); line-height:1.1; margin:0; }
+  .names .amp { font-size:.42em; color:var(--gold); margin:0 .12em; }
+  .sub { font-style:italic; color:var(--muted); font-size:1.25rem; margin:4px 0 0; }
+  .rule { display:flex; align-items:center; gap:14px; width:min(300px, 70%); margin:30px auto; }
+  .rule::before, .rule::after { content:""; flex:1; height:1px; background:var(--gold-soft); }
+  .rule svg { width:16px; height:16px; color:var(--gold); }
+  .summary { text-align:center; font-size:1.3rem; max-width:640px; margin:0 auto 34px; }
+  .summary b { font-weight:500; color:var(--gold); font-size:.9em; }
+
+  /* toolbar */
+  .bar { display:flex; flex-wrap:wrap; align-items:center; gap:10px; padding:12px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin-bottom:30px; }
+  .spacer { flex:1; }
+  .pill { font-family:var(--sans); font-size:.86rem; padding:9px 16px; border-radius:999px; border:1px solid var(--line); background:transparent; cursor:pointer; white-space:nowrap; }
+  .pill .n { opacity:.75; margin-left:6px; }
+  .pill[aria-pressed="true"] { background:var(--sage); border-color:var(--sage); color:#fff; }
+  .search { font-family:var(--sans); font-size:.86rem; border:0; border-bottom:1px solid var(--line); background:transparent; padding:9px 4px; width:170px; }
+  .search:focus { outline:none; border-bottom-color:var(--gold); }
+  .icon { width:38px; height:38px; border-radius:50%; border:1px solid var(--line); background:transparent; display:grid; place-items:center; cursor:pointer; }
+  .icon svg { width:17px; height:17px; }
+  .icon[aria-pressed="true"] { background:var(--sage); border-color:var(--sage); color:#fff; }
+  .group { display:flex; gap:8px; flex-wrap:wrap; }
+
+  /* wish cards */
+  .grid { columns:3 300px; column-gap:26px; }
+  .card { break-inside:avoid; margin:0 0 26px; background:var(--card); padding:22px 26px 20px; border-radius:3px;
+          box-shadow:0 14px 28px -20px rgba(60,40,20,.5), 0 1px 2px rgba(60,40,20,.08); position:relative; }
+  .card:nth-child(4n+2) { background:var(--blush); transform:rotate(.6deg); }
+  .card:nth-child(4n+3) { transform:rotate(-.5deg); }
+  .card:nth-child(4n+4) { background:var(--blush); }
+  .card::before { content:"\201C"; position:absolute; top:6px; left:16px; font-size:3rem; line-height:1; color:var(--gold); opacity:.65; font-family:Georgia,serif; }
+  .msg { font-size:1.25rem; margin:16px 0 18px; white-space:pre-wrap; overflow-wrap:anywhere; }
+  .msg[dir="rtl"] { font-family:"Amiri",serif; font-size:1.2rem; }
+  .foot { display:flex; align-items:flex-end; justify-content:space-between; gap:10px; border-top:1px dashed var(--gold-soft); padding-top:12px; }
+  .who { font-family:var(--script); font-size:1.85rem; line-height:1.1; overflow-wrap:anywhere; }
+  .meta { text-align:right; flex-shrink:0; }
+  .badge { display:inline-block; font-family:var(--sans); font-size:.72rem; padding:3px 10px; border-radius:999px; border:1px solid var(--ink); }
+  .badge.no { border-color:var(--muted); color:var(--muted); }
+  .when { display:block; font-family:var(--sans); font-size:.72rem; color:var(--muted); margin-top:5px; }
+
+  /* guest list */
+  .tablewrap { overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; font-size:1.05rem; }
+  th { font-family:var(--sans); font-weight:400; font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); }
+  td { padding:12px; border-bottom:1px solid var(--line); vertical-align:top; }
+  td.nm { font-weight:500; }
+  td.ms { color:var(--muted); max-width:380px; }
+  tfoot td { font-family:var(--sans); font-size:.85rem; color:var(--muted); border-bottom:0; }
+
+  .empty { text-align:center; color:var(--muted); font-style:italic; padding:40px 0; }
+  .status { text-align:center; margin-top:34px; font-family:var(--sans); font-size:.8rem; color:var(--muted); display:flex; gap:12px; justify-content:center; align-items:center; }
+  .banner { font-family:var(--sans); font-size:.82rem; background:rgba(176,138,78,.12); border:1px solid var(--gold-soft); border-radius:12px; padding:10px 14px; margin:0 auto 26px; max-width:640px; text-align:center; }
+
+  /* lock screen */
+  #gate { min-height:100vh; min-height:100svh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:30px; }
+  #gate form { display:flex; flex-direction:column; align-items:center; gap:14px; margin-top:26px; width:min(320px, 100%); }
+  #gate input { width:100%; text-align:center; font-family:var(--sans); letter-spacing:.2em; border:0; border-bottom:1px solid var(--line); background:transparent; padding:10px; font-size:1rem; }
+  #gate input:focus { outline:none; border-bottom-color:var(--gold); }
+  .btn { font-family:var(--sans); font-size:.78rem; letter-spacing:.2em; text-transform:uppercase; padding:13px 30px; border-radius:999px; border:0; background:var(--sage); color:#fff; cursor:pointer; }
+  .err { color:#A0524A; font-family:var(--sans); font-size:.85rem; min-height:1.3em; }
+
+  /* keepsake book view */
+  #book { position:fixed; inset:0; z-index:20; background:var(--paper); display:none; flex-direction:column; align-items:center; justify-content:center; padding:30px 20px; }
+  #book.open { display:flex; }
+  #book .page { max-width:620px; width:100%; text-align:center; }
+  #book .q { font-size:clamp(1.5rem, 4.2vw, 2.2rem); line-height:1.45; font-style:italic; white-space:pre-wrap; overflow-wrap:anywhere; }
+  #book .q[dir="rtl"] { font-style:normal; font-family:"Amiri",serif; }
+  #book .by { font-family:var(--script); font-size:2.4rem; margin-top:26px; }
+  #book .count { font-family:var(--sans); font-size:.78rem; letter-spacing:.2em; color:var(--muted); margin-top:18px; }
+  #book .nav { display:flex; gap:12px; margin-top:34px; }
+  #book .close { position:absolute; top:calc(16px + env(safe-area-inset-top,0px)); right:16px; }
+
+  @media (max-width:640px) {
+    .wrap { padding-top:40px; }
+    .bar { gap:8px; }
+    .spacer { display:none; }
+    .search { width:100%; order:9; }
+  }
+  @media print {
+    .bar, .status, .banner, #book { display:none !important; }
+    body { background:#fff; }
+    .card { box-shadow:none; border:1px solid #ddd; transform:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div id="gate" hidden>
+  <h1 class="names">Mohamed <span class="amp">&amp;</span> Maryam</h1>
+  <p class="sub">Wishes from the people who love you</p>
+  <form id="gateForm">
+    <input id="pass" type="password" placeholder="Passcode" autocomplete="current-password" aria-label="Passcode">
+    <button class="btn" type="submit">Open</button>
+    <div class="err" id="gateErr" role="alert"></div>
+  </form>
+</div>
+
+<div id="app" hidden>
+  <div class="wrap">
+    <header>
+      <h1 class="names">Mohamed <span class="amp">&amp;</span> Maryam</h1>
+      <p class="sub">Wishes from the people who love you</p>
+      <div class="rule"><svg viewBox="-12 -12 24 24" aria-hidden="true"><path fill="currentColor" d="M0,-10 C1,-2.6 2.6,-1 10,0 C2.6,1 1,2.6 0,10 C-1,2.6 -2.6,1 -10,0 C-2.6,-1 -1,-2.6 0,-10Z"/></svg></div>
+    </header>
+
+    <div class="banner" id="banner" hidden></div>
+    <p class="summary" id="summary"></p>
+
+    <div class="bar" role="toolbar" aria-label="Wishes tools">
+      <div class="group">
+        <button class="pill" data-tab="wishes" aria-pressed="true">Wishes<span class="n" id="nW">0</span></button>
+        <button class="pill" data-tab="guests" aria-pressed="false">Guest list<span class="n" id="nG">0</span></button>
+      </div>
+      <div class="spacer"></div>
+      <div class="group">
+        <button class="pill" data-filter="all" aria-pressed="true">Everyone</button>
+        <button class="pill" data-filter="yes" aria-pressed="false">Coming</button>
+        <button class="pill" data-filter="no" aria-pressed="false">Can’t come</button>
+      </div>
+      <input class="search" id="q" type="search" placeholder="Search a name or word" aria-label="Search">
+      <div class="group">
+        <button class="icon" id="bookBtn" title="Read as a keepsake book" aria-label="Read as a keepsake book"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 6c-2-1.5-5-2-8-1.5V19c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5V4.5C17 4 14 4.5 12 6z"/><path d="M12 6v14.5"/></svg></button>
+        <button class="icon" id="sortBtn" title="Newest first" aria-label="Change order"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v16M3 8l4-4 4 4M17 20V4M13 16l4 4 4-4"/></svg></button>
+        <button class="icon" id="csvBtn" title="Download as a spreadsheet (CSV)" aria-label="Download CSV"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></button>
+        <button class="icon" id="printBtn" title="Print" aria-label="Print"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M7 9V4h10v5M7 17H5a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-2"/><path d="M7 14h10v6H7z"/></svg></button>
+        <button class="icon" id="refreshBtn" title="Refresh" aria-label="Refresh"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v5h-5"/></svg></button>
+      </div>
+    </div>
+
+    <main id="view"></main>
+
+    <div class="status"><span id="updated"></span><button class="pill" id="lockBtn">Lock</button></div>
+  </div>
+</div>
+
+<div id="book" role="dialog" aria-modal="true" aria-label="Keepsake book">
+  <button class="icon close" id="bookClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <div class="page"><div class="q" id="bq"></div><div class="by" id="bby"></div><div class="count" id="bcount"></div></div>
+  <div class="nav"><button class="pill" id="bPrev">← Previous</button><button class="pill" id="bNext">Next →</button></div>
+</div>
+
+<script>
+(function(){
+  const API = (window.MNM_CONFIG && window.MNM_CONFIG.API_URL) || '';
+  const configured = API && API.indexOf('PASTE_') !== 0;
+  const KEY_STORE = 'mnm26-key';
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const isAr = s => /[\u0600-\u06FF]/.test(s || '');
+  const store = { get(){ try { return localStorage.getItem(KEY_STORE) || ''; } catch(e){ return ''; } },
+                  set(v){ try { localStorage.setItem(KEY_STORE, v); } catch(e){} },
+                  del(){ try { localStorage.removeItem(KEY_STORE); } catch(e){} } };
+
+  let entries = [], tab = 'wishes', filter = 'all', newest = true, timer = null, bookIdx = 0;
+
+  const SAMPLE = [
+    { name:'Nour & Karim', attending:'yes', party:2, message:'Wishing you a lifetime of love and laughter. We can’t wait to celebrate with you!', ts:new Date(Date.now()-36e5).toISOString() },
+    { name:'تيتة سعاد', attending:'yes', party:1, message:'ربنا يتمم لكم على خير ويجعلها جوازة العمر 🤍', ts:new Date(Date.now()-72e5).toISOString() },
+    { name:'Youssef', attending:'no', party:0, message:'So sorry I’ll be abroad, but my heart is with you both. Mabrook!', ts:new Date(Date.now()-9e6).toISOString() },
+    { name:'Laila', attending:'yes', party:3, message:'', ts:new Date(Date.now()-12e6).toISOString() }
+  ];
+
+  async function load(key){
+    if (!configured) return { ok:true, entries:SAMPLE, sample:true };
+    const r = await fetch(API + (API.includes('?') ? '&' : '?') + 'key=' + encodeURIComponent(key) + '&t=' + Date.now());
+    return r.json();
+  }
+
+  async function open(key, fromGate){
+    try {
+      const res = await load(key);
+      if (!res.ok) {
+        if (fromGate) $('gateErr').textContent = res.error === 'locked' ? 'That passcode isn’t right.' : 'Couldn’t open the wishes. Please try again.';
+        showGate(); return;
+      }
+      if (fromGate && configured) store.set(key);
+      entries = (res.entries || []).map(e => ({ ...e, party:Number(e.party) || 0 }));
+      $('gate').hidden = true; $('app').hidden = false;
+      const b = $('banner');
+      if (res.sample) { b.hidden = false; b.textContent = 'Preview with sample wishes. Connect the backend (see docs/BACKEND.md) to see real replies.'; }
+      else b.hidden = true;
+      $('updated').textContent = 'Updated ' + new Date().toLocaleTimeString([], { hour:'2-digit', minute:'2-digit' });
+      render();
+      clearInterval(timer); if (configured) timer = setInterval(() => open(store.get(), false), 60000);
+    } catch(e) {
+      if (fromGate) $('gateErr').textContent = 'Couldn’t reach the wishes. Check your connection and try again.';
+      if (!$('app').hidden) $('updated').textContent = 'Offline, showing the last update';
+      else showGate();
+    }
+  }
+
+  function showGate(){ $('app').hidden = true; $('gate').hidden = false; setTimeout(() => $('pass').focus(), 50); }
+
+  function visible(){
+    const q = $('q').value.trim().toLowerCase();
+    return entries
+      .filter(e => filter === 'all' || e.attending === filter)
+      .filter(e => !q || (e.name + ' ' + e.message).toLowerCase().includes(q))
+      .sort((a,b) => newest ? b.ts.localeCompare(a.ts) : a.ts.localeCompare(b.ts));
+  }
+  const fmt = ts => { const d = new Date(ts); return d.toLocaleDateString([], { day:'numeric', month:'short' }) + ' at ' + d.toLocaleTimeString([], { hour:'numeric', minute:'2-digit' }); };
+  const badge = e => e.attending === 'yes'
+    ? `<span class="badge">${e.party > 1 ? 'Coming · party of ' + e.party : 'Coming'}</span>`
+    : `<span class="badge no">Can’t come</span>`;
+
+  function render(){
+    const coming = entries.filter(e => e.attending === 'yes');
+    const guests = coming.reduce((n,e) => n + (e.party || 1), 0);
+    const words = entries.filter(e => e.message && e.message.trim()).length;
+    const S = n => `<b>${n}</b>`;
+    $('summary').innerHTML = entries.length
+      ? `${S(entries.length)} ${entries.length === 1 ? 'reply' : 'replies'} so far. ${S(coming.length)} ${coming.length === 1 ? 'is' : 'are'} coming, bringing ${S(guests)} ${guests === 1 ? 'guest' : 'guests'} in all. ${S(words)} left you a few words to keep.`
+      : 'No replies yet. The first wishes will appear here.';
+    $('nW').textContent = words; $('nG').textContent = entries.length;
+
+    const list = visible(), view = $('view');
+    if (tab === 'wishes') {
+      const w = list.filter(e => e.message && e.message.trim());
+      view.innerHTML = w.length ? `<div class="grid">${w.map(e => `
+        <article class="card">
+          <p class="msg" dir="${isAr(e.message) ? 'rtl' : 'ltr'}">${esc(e.message)}</p>
+          <div class="foot"><div class="who" dir="auto">${esc(e.name)}</div><div class="meta">${badge(e)}<span class="when">${fmt(e.ts)}</span></div></div>
+        </article>`).join('')}</div>` : `<p class="empty">No wishes to show here yet.</p>`;
+    } else {
+      const total = list.filter(e => e.attending === 'yes').reduce((n,e) => n + (e.party || 1), 0);
+      view.innerHTML = list.length ? `<div class="tablewrap"><table>
+        <thead><tr><th>Name</th><th>Reply</th><th>Party</th><th>Message</th><th>Received</th></tr></thead>
+        <tbody>${list.map(e => `<tr><td class="nm" dir="auto">${esc(e.name)}</td><td>${e.attending === 'yes' ? 'Coming' : 'Can’t come'}</td><td>${e.attending === 'yes' ? (e.party || 1) : '–'}</td><td class="ms" dir="auto">${esc(e.message)}</td><td>${fmt(e.ts)}</td></tr>`).join('')}</tbody>
+        <tfoot><tr><td colspan="5">${list.length} shown · ${total} attending guests</td></tr></tfoot></table></div>` : `<p class="empty">Nobody matches this view.</p>`;
+    }
+  }
+
+  // toolbar
+  document.querySelectorAll('[data-tab]').forEach(b => b.onclick = () => {
+    tab = b.dataset.tab; document.querySelectorAll('[data-tab]').forEach(x => x.setAttribute('aria-pressed', x === b)); render(); });
+  document.querySelectorAll('[data-filter]').forEach(b => b.onclick = () => {
+    filter = b.dataset.filter; document.querySelectorAll('[data-filter]').forEach(x => x.setAttribute('aria-pressed', x === b)); render(); });
+  $('q').oninput = render;
+  $('sortBtn').onclick = () => { newest = !newest; $('sortBtn').title = newest ? 'Newest first' : 'Oldest first'; render(); };
+  $('refreshBtn').onclick = () => open(store.get(), false);
+  $('printBtn').onclick = () => window.print();
+  $('lockBtn').onclick = () => { store.del(); clearInterval(timer); entries = []; $('pass').value = ''; $('gateErr').textContent = ''; showGate(); };
+  $('csvBtn').onclick = () => {
+    const rows = [['Name','Reply','Party','Message','Language','Received']].concat(visible().map(e =>
+      [e.name, e.attending === 'yes' ? 'Coming' : "Can't come", e.attending === 'yes' ? (e.party || 1) : 0, e.message, e.lang || '', new Date(e.ts).toLocaleString()]));
+    const csv = '\uFEFF' + rows.map(r => r.map(v => '"' + String(v ?? '').replace(/"/g,'""') + '"').join(',')).join('\r\n');
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], { type:'text/csv;charset=utf-8' }));
+    a.download = 'MnM26-wishes.csv'; document.body.appendChild(a); a.click(); a.remove();
+  };
+
+  // keepsake book
+  const bookList = () => visible().filter(e => e.message && e.message.trim());
+  function showPage(){
+    const l = bookList(); if (!l.length) return;
+    bookIdx = (bookIdx + l.length) % l.length; const e = l[bookIdx];
+    $('bq').textContent = e.message; $('bq').dir = isAr(e.message) ? 'rtl' : 'ltr';
+    $('bby').textContent = e.name; $('bcount').textContent = (bookIdx + 1) + ' / ' + l.length;
+  }
+  $('bookBtn').onclick = () => { if (!bookList().length) return; bookIdx = 0; showPage(); $('book').classList.add('open'); $('bNext').focus(); };
+  $('bookClose').onclick = () => $('book').classList.remove('open');
+  $('bPrev').onclick = () => { bookIdx--; showPage(); };
+  $('bNext').onclick = () => { bookIdx++; showPage(); };
+  document.addEventListener('keydown', e => {
+    if (!$('book').classList.contains('open')) return;
+    if (e.key === 'Escape') $('book').classList.remove('open');
+    if (e.key === 'ArrowRight') { bookIdx++; showPage(); }
+    if (e.key === 'ArrowLeft') { bookIdx--; showPage(); }
+  });
+
+  // gate
+  $('gateForm').onsubmit = e => { e.preventDefault(); $('gateErr').textContent = ''; const k = $('pass').value.trim(); if (k) open(k, true); };
+  if (!configured) open('', false);
+  else if (store.get()) open(store.get(), false);
+  else showGate();
+})();
+</script>
+</body>
+</html>
