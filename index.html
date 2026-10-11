@@ -54,32 +54,29 @@
   body.revealed #content { visibility:visible; }
   section { min-height:100vh; min-height:100svh; display:flex; flex-direction:column; align-items:center; justify-content:center;
             text-align:center; padding:48px 28px; }
-  .caps { font-weight:300; text-transform:uppercase; letter-spacing:.32em; font-size:calc(.78rem * var(--k,1)); color:var(--soft); line-height:2; margin:0; }
+  .caps { font-weight:300; text-transform:uppercase; letter-spacing:.32em; font-size:.78rem; color:var(--soft); line-height:2; margin:0; }
   .script { font-family:"Pinyon Script", "Snell Roundhand", cursive; font-weight:400; margin:0; line-height:1.05; text-shadow:0 2px 18px rgba(20,30,45,.35); }
-  .names { font-size:calc(clamp(3rem, 15vw, 5.4rem) * var(--k,1)); }
-  .amp { font-size:calc(2rem * var(--k,1)); margin:0; opacity:.9; }
-  .rule { display:flex; align-items:center; gap:14px; width:min(84%, 360px); margin:calc(16px * var(--k,1)) auto; }
-  /* hero fits one screen down to the "scroll" hint; --k and padding-top are tuned by fitHero() */
-  .hero { justify-content:flex-start; height:100vh; height:100svh; min-height:0; padding-top:31vh; padding-top:31svh;
-          padding-bottom:calc(14px + env(safe-area-inset-bottom,0px)); }
-  .hero .invite { margin-top:calc(16px * var(--k,1)); }
+  .names { font-size:clamp(3rem, 15vw, 5.4rem); }
+  .amp { font-size:2rem; margin:0; opacity:.9; }
+  .rule { display:flex; align-items:center; gap:14px; width:min(84%, 360px); margin:16px auto; }
+  .hero { justify-content:flex-start; padding-top:max(31vh, 31svh); padding-bottom:28px; }
   .rule::before, .rule::after { content:""; flex:1; height:1px; background:var(--line); }
   .rule span { width:6px; height:6px; background:var(--soft); transform:rotate(45deg); }
-  .forever { font-size:calc(2.3rem * var(--k,1)); margin-top:2px; }
-  .date { font-weight:300; letter-spacing:.35em; font-size:calc(1.35rem * var(--k,1)); margin:0; }
+  .forever { font-size:2.3rem; margin-top:2px; }
+  .date { font-weight:300; letter-spacing:.35em; font-size:1.35rem; margin:0; }
   .date i { font-style:normal; opacity:.6; margin:0 .5em; }
-  .chapter { font-size:calc(2rem * var(--k,1)); }
-  .scroll { margin-top:calc(26px * var(--k,1)); font-weight:300; letter-spacing:.3em; font-size:calc(.72rem * var(--k,1)); color:var(--soft); text-transform:uppercase; }
-  .scroll svg { display:block; margin:calc(10px * var(--k,1)) auto 0; animation:nudge 2s ease-in-out infinite; }
+  .chapter { font-size:2rem; }
+  .scroll { margin-top:26px; font-weight:300; letter-spacing:.3em; font-size:.72rem; color:var(--soft); text-transform:uppercase; }
+  .scroll svg { display:block; margin:10px auto 0; animation:nudge 2s ease-in-out infinite; }
   @keyframes nudge { 0%,100% { transform:translateY(0) } 50% { transform:translateY(6px) } }
 
-  .reveal > * { opacity:0; transform:translateY(14px); transition:opacity 1.2s ease, transform 1.2s ease; }
-  body.revealed .reveal > * { opacity:1; transform:none; }
-  body.revealed .reveal > *:nth-child(2) { transition-delay:.25s } body.revealed .reveal > *:nth-child(3) { transition-delay:.5s }
-  body.revealed .reveal > *:nth-child(4) { transition-delay:.75s } body.revealed .reveal > *:nth-child(5) { transition-delay:1s }
-  body.revealed .reveal > *:nth-child(6) { transition-delay:1.2s } body.revealed .reveal > *:nth-child(7) { transition-delay:1.4s }
-  body.revealed .reveal > *:nth-child(8) { transition-delay:1.6s } body.revealed .reveal > *:nth-child(9) { transition-delay:1.8s }
-  body.revealed .reveal > *:nth-child(10) { transition-delay:2s } body.revealed .reveal > *:nth-child(11) { transition-delay:2.3s }
+  .reveal > *, .heroIn > * { opacity:0; transform:translateY(14px); transition:opacity 1.2s ease, transform 1.2s ease; }
+  body.revealed .reveal > *, body.revealed .heroIn > * { opacity:1; transform:none; }
+  body.revealed .reveal > *:nth-child(2), body.revealed .heroIn > *:nth-child(2) { transition-delay:.25s } body.revealed .reveal > *:nth-child(3), body.revealed .heroIn > *:nth-child(3) { transition-delay:.5s }
+  body.revealed .reveal > *:nth-child(4), body.revealed .heroIn > *:nth-child(4) { transition-delay:.75s } body.revealed .reveal > *:nth-child(5), body.revealed .heroIn > *:nth-child(5) { transition-delay:1s }
+  body.revealed .reveal > *:nth-child(6), body.revealed .heroIn > *:nth-child(6) { transition-delay:1.2s } body.revealed .reveal > *:nth-child(7), body.revealed .heroIn > *:nth-child(7) { transition-delay:1.4s }
+  body.revealed .reveal > *:nth-child(8), body.revealed .heroIn > *:nth-child(8) { transition-delay:1.6s } body.revealed .reveal > *:nth-child(9), body.revealed .heroIn > *:nth-child(9) { transition-delay:1.8s }
+  body.revealed .reveal > *:nth-child(10), body.revealed .heroIn > *:nth-child(10) { transition-delay:2s } body.revealed .reveal > *:nth-child(11), body.revealed .heroIn > *:nth-child(11) { transition-delay:2.3s }
 
   .panel { background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.35); border-radius:22px; padding:34px 22px;
            width:min(100%, 420px); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); }
@@ -170,12 +167,12 @@
   html[lang="ar"] body, html[lang="ar"] .paper { font-family:"Amiri", "Traditional Arabic", serif; }
   html[lang="ar"] .caps, html[lang="ar"] .scroll, html[lang="ar"] .paper .lbl, html[lang="ar"] .paper .cgrid small,
   html[lang="ar"] .paper .field label, html[lang="ar"] .paper .btn, html[lang="ar"] .paper .sw span { letter-spacing:0; font-family:"Amiri", serif; }
-  html[lang="ar"] .caps { font-size:calc(1.05rem * var(--k,1)); line-height:1.9; }
+  html[lang="ar"] .caps { font-size:1.05rem; line-height:1.9; }
   html[lang="ar"] .paper .lbl { font-size:1rem; }
   html[lang="ar"] .paper .btn { font-size:1.05rem; }
   html[lang="ar"] .script, html[lang="ar"] #hint, html[lang="ar"] .paper .cnames, html[lang="ar"] .paper .camp, html[lang="ar"] .paper .ev .t { font-family:"Aref Ruqaa", "Amiri", serif; }
-  html[lang="ar"] .names { font-size:calc(clamp(3rem, 16vw, 5rem) * var(--k,1)); line-height:1.35; }
-  html[lang="ar"] .forever { font-size:calc(2.1rem * var(--k,1)); } html[lang="ar"] .chapter { font-size:calc(1.9rem * var(--k,1)); }
+  html[lang="ar"] .names { font-size:clamp(3rem, 16vw, 5rem); line-height:1.35; }
+  html[lang="ar"] .forever { font-size:2.1rem; } html[lang="ar"] .chapter { font-size:1.9rem; }
   html[lang="ar"] .paper h2, html[lang="ar"] .paper .vname { font-style:normal; font-weight:700; font-size:2rem; }
   html[lang="ar"] .paper .cgrid b { font-style:normal; }
   html[lang="ar"] .paper .cnames { line-height:1.4; }
@@ -259,6 +256,11 @@
   #introWrap.playing .poster { opacity:0; }
   #introWrap.gone { display:none; }
   #hint { z-index:6; } #openBtn { z-index:7; } #lang { z-index:8; }
+
+  /* hero always fits the visible screen, keeping the same proportions on every phone/browser */
+  .hero { min-height:100vh; min-height:100svh; }
+  .heroIn { display:flex; flex-direction:column; align-items:center; width:100%; transform-origin:50% 0; }
+  .reveal > .heroIn { opacity:1 !important; transform-origin:50% 0; }
 </style>
 </head>
 <body>
@@ -275,13 +277,13 @@
   <button id="lang" type="button" aria-label="Switch language">عربي</button>
 
   <main id="content">
-    <section class="reveal hero">
+    <section class="reveal hero"><div class="heroIn">
       <p class="caps" data-i18n="families">Together with their families</p>
       <div class="rule"><span></span></div>
       <h1 class="script names" data-i18n="n1">Mohamed</h1>
       <p class="script amp" data-i18n="amp">&amp;</p>
       <p class="script names" data-i18n="n2">Maryam</p>
-      <p class="caps invite" data-i18n="invite">Invite you to celebrate<br>the beginning of their</p>
+      <p class="caps" style="margin-top:16px" data-i18n="invite">Invite you to celebrate<br>the beginning of their</p>
       <p class="script forever" data-i18n="forever">forever</p>
       <div class="rule"><span></span></div>
       <p class="date">29<i>|</i>10<i>|</i>2026</p>
@@ -290,6 +292,7 @@
       <div class="scroll"><span data-i18n="scroll">Scroll down</span>
         <svg width="18" height="10" viewBox="0 0 18 10" aria-hidden="true"><path d="M1 1l8 8 8-8" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
       </div>
+    </div>
     </section>
 
 
@@ -393,37 +396,6 @@
   }
   document.getElementById('openBtn').addEventListener('click', start, { once:true });
 
-  /* shrink the hero text (and, on very short screens, the space above it) so everything
-     down to the "scroll" hint is visible on first view, whatever the device */
-  const hero=document.querySelector('.hero');
-  function contentH(){
-    const f=hero.firstElementChild, l=hero.lastElementChild;
-    return l.offsetTop + l.offsetHeight - f.offsetTop;
-  }
-  function fitHero(){
-    hero.style.setProperty('--k','1'); hero.style.paddingTop='';
-    const vh=hero.clientHeight, cs=getComputedStyle(hero);
-    const padB=parseFloat(cs.paddingBottom), padT=parseFloat(cs.paddingTop);
-    let pt=padT, h=contentH(), k=Math.min(1, (vh-pt-padB)/h);
-    if (k<.8){                                   // give back some of the sky before shrinking further
-      pt=Math.max(vh*.12, vh-padB-h*.8);
-      k=Math.min(1, (vh-pt-padB)/h);
-      hero.style.paddingTop=pt+'px';
-    }
-    for (let i=0;i<3 && k<1;i++){               // line wrapping isn't perfectly linear; refine
-      hero.style.setProperty('--k', k.toFixed(3));
-      const over=contentH()-(vh-pt-padB);
-      if (over<=0) break;
-      k*= (vh-pt-padB)/(contentH());
-    }
-    hero.style.setProperty('--k', k.toFixed(3));
-  }
-  window.fitHero=fitHero;
-  fitHero();
-  addEventListener('resize', fitHero);
-  addEventListener('orientationchange', fitHero);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitHero);
-
   const target=new Date('2026-10-29T19:00:00+03:00').getTime();
   const pad=n=>String(n).padStart(2,'0');
   function tick(){
@@ -487,7 +459,6 @@
     document.getElementById('swatches').innerHTML = swatchHex.map((h,i)=>`<div><i style="background:${h}"></i><span>${t.colors[i]}</span></div>`).join('');
     document.getElementById('faq').innerHTML = t.faq.map(f=>`<details><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join('');
     document.getElementById('note').textContent = '';
-    if (window.fitHero) fitHero();
   }
   document.getElementById('lang').addEventListener('click', e => { e.stopPropagation(); applyLang(LANG==='en' ? 'ar' : 'en'); });
   applyLang((navigator.language||'').toLowerCase().startsWith('ar') ? 'ar' : 'en');
@@ -694,6 +665,25 @@ musicBtn.onclick = () => playing ? stopMusic() : startMusic();
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
+})();
+</script>
+<script>
+(function(){
+  const hero=document.querySelector('.hero'), inn=document.querySelector('.heroIn');
+  function fit(){
+    const vh=(window.visualViewport ? visualViewport.height : innerHeight);
+    inn.style.transform='none';
+    const h=inn.offsetHeight, bottom=22;
+    let top=vh*0.31;                                  // same framing as the design
+    if (top+h+bottom>vh) top=Math.max(vh*0.2, vh-h-bottom);   // lift it a little on shorter screens
+    let k=Math.min(1,(vh-top-bottom)/h);              // then scale it, never crop it
+    hero.style.paddingTop=top+'px';
+    inn.style.transform= k<1 ? `scale(${k.toFixed(4)})` : 'none';
+    hero.style.height=vh+'px'; hero.style.minHeight=vh+'px';
+  }
+  fit(); addEventListener('resize',fit); if (window.visualViewport) visualViewport.addEventListener('resize',fit);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  document.addEventListener('click',e=>{ if(e.target.closest('#lang')) setTimeout(fit,30); });
 })();
 </script>
 </body>
