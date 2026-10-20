@@ -12,7 +12,7 @@
   <script src="assets/config.js"></script>
   <title>Mohamed &amp; Maryam — You're invited</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Jost:wght@300;400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Jost:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root { --bg:#efeae3; --ink:#2B2824; --soft:rgba(43,40,36,.78); --line:rgba(176,138,78,.55); box-sizing:border-box; }
   @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#1f222a; } }
@@ -242,7 +242,8 @@
   #introWrap.playing .poster { opacity:0; }
   #introWrap.gone { display:none; }
   .hero .caps, .hero .date, .hero .scroll { text-shadow:0 0 12px rgba(255,252,246,.95); }
-  .hero .date { color:#B08A4E; font-weight:400; }
+  .hero .caps, .hero .scroll { font-weight:500; color:var(--ink); }   /* thin 300 was hard to read on the bright photo */
+  .hero .date { color:#B08A4E; font-weight:500; }
   #hint { z-index:6; } #openBtn { z-index:7; } #lang { z-index:8; }
 
   /* hero always fits the visible screen, keeping the same proportions on every phone/browser */
